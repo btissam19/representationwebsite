@@ -8,8 +8,6 @@ const {
 } = require('../controller/skills');
 
 const SkillsRoutes = express.Router();
-
-// Create a new skill and get all skills
 SkillsRoutes.route('/')
     .post(upload.single('file'), CreateSkills)
     .get(getALLSkills);

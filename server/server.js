@@ -14,6 +14,9 @@ require('dotenv').config();
 const port = process.env.PORT || 4000;
 const databaseUrl = process.env.MONGO_URL;
 const skills=require('./routes/skills.js')
+const projects=require('./routes/project')
+const contact=require('./routes/contact')
+const resume=require('./routes/resume')
 
 app.engine('hbs', exphbs.engine({
     extname: '.hbs',
@@ -24,6 +27,9 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/skills',skills);
+app.use('/projects',projects)
+app.use('/contact',contact);
+app.use('/resume',resume);
 app.use('/uploads', express.static('uploads'));
 
 
