@@ -1,5 +1,6 @@
 const express = require('express');
 const upload = require('../middleware/uploadFiles');
+const protect=require('../middleware/protect');
 const {
     CreateSkills,
     getALLSkills,
@@ -7,7 +8,7 @@ const {
 
 const SkillsRoutes = express.Router();
 SkillsRoutes.route('/')
-    .post(upload.single('file'), CreateSkills)
+    .post(upload.single('file'),CreateSkills)
     .get(getALLSkills);
 
 module.exports = SkillsRoutes;

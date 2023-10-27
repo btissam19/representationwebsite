@@ -1,8 +1,12 @@
 const mongoose=require('mongoose');
 
 const ProjectSchema=mongoose.Schema({
-
-        file:{
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: 'User',
+      },
+   file:{
             type:String,
             required:false
         

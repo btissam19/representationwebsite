@@ -1,6 +1,11 @@
 const mongoose=require('mongoose');
 
 const SkillsSchema=new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: 'User',
+      },
 
     category:{
             type:String,
