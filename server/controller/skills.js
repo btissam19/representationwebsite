@@ -38,50 +38,7 @@ const getALLSkills = async (req, res) => {
     }
 }
 
-const updateSkill = async (req, res) => {
-    try {
-        const { skillId } = req.params;
-        const { category, technologie } = req.body;
-        const filePath = req.file ? req.file.path : null;
-
-        let skillDoc = await Skills.findById(skillId);
-        if (!skillDoc) {
-            return res.status(404).json({ message: "Skill not found" });
-        }
-
-        if (category) skillDoc.category = category;
-        if (filePath) skillDoc.skills[0].file = filePath; 
-        if (technologie) skillDoc.skills[0].technologie = technologie;
-
-        await skillDoc.save();
-
-        res.status(200).json({ skillDoc });
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ message: "Internal server error", error: e.message });
-    }
-}
-
-const deleteSkill = async (req, res) => {
-    try {
-        const { skillId } = req.params;
-
-        let skillDoc = await Skills.findById(skillId);
-        if (!skillDoc) {
-            return res.status(404).json({ message: "Skill not found" });
-        }
-
-        await Skills.findByIdAndDelete(skillId);
-        res.status(200).json({ message: "Skill deleted successfully" });
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ message: "Internal server error", error: e.message });
-    }
-}
-
 module.exports = { 
     CreateSkills, 
     getALLSkills,
-    updateSkill,
-    deleteSkill
 };

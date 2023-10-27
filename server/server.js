@@ -17,6 +17,7 @@ const skills=require('./routes/skills.js')
 const projects=require('./routes/project')
 const contact=require('./routes/contact')
 const resume=require('./routes/resume')
+const users=require('./routes/user')
 
 app.engine('hbs', exphbs.engine({
     extname: '.hbs',
@@ -30,6 +31,7 @@ app.use('/skills',skills);
 app.use('/projects',projects)
 app.use('/contact',contact);
 app.use('/resume',resume);
+app.use('/users',users)
 app.use('/uploads', express.static('uploads'));
 
 
